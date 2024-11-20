@@ -474,11 +474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/edwinp/Documents/Classes/DND/DND.csproj",
+      "projectUniqueName": "/home/edwinp/Documents/DND/DND.csproj",
       "projectName": "DND",
-      "projectPath": "/home/edwinp/Documents/Classes/DND/DND.csproj",
+      "projectPath": "/home/edwinp/Documents/DND/DND.csproj",
       "packagesPath": "/home/edwinp/.nuget/packages/",
-      "outputPath": "/home/edwinp/Documents/Classes/DND/obj/",
+      "outputPath": "/home/edwinp/Documents/DND/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/edwinp/.nuget/NuGet/NuGet.Config"
@@ -533,7 +533,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.410/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.114/RuntimeIdentifierGraph.json"
       }
     }
   }
