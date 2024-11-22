@@ -10,7 +10,6 @@ namespace DND.Models
         public int CharacterLevel { get; set; }
         public Race CharacterRace { get; set; }
         public List<string> SkillProficiencies { get; set; }
-        public List<IEquipment> Inventory { get; set; }
         public Dictionary<string, List<string>> GearProficiencies { get; set; }
         public List<string> Expertise { get; set; }
         public List<string> Languages { get; set; }
@@ -20,6 +19,10 @@ namespace DND.Models
         public string Alignment { get; set; }
         public Armor equippedArmor { get; set; }
         public Weapon equippedWeapon { get; set; }
+        public List<Armor> storedArmor { get; set; }
+        public List<Weapon> storedWeapon { get; set; }
+        public List<Possession> possessions { get; set; }
+        public int currentExperience { get; set; }
         
     }
 }

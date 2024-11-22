@@ -10,5 +10,6 @@ namespace DND.Models
         public string HitDice { get; set; } // e.g., "1d10"
         public List<string> SavingThrows { get; set; } // e.g., "Strength", "Constitution"
         public List<string> ClassFeatures { get; set; } // e.g., "Second Wind", "Action Surge"
+        public Subclass ChosenSubclass { get; set; } // nullable
     }
 }

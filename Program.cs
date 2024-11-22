@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 // Retrieve the MongoDB connection string and database name from environment variables
 var mongoConnectionString = builder.Configuration["ConnectionString"];
-var mongoDatabaseName = "AdventurersArchive";
+var mongoDatabaseName = "Adventurers_Archive";
 
 // Configure MongoDB client
 builder.Services.AddSingleton<IMongoClient, MongoClient>(sp =>
@@ -22,7 +22,37 @@ builder.Services.AddSingleton(sp =>
 
 // Register the CharacterSheet collection
 builder.Services.AddSingleton(sp =>
-    sp.GetRequiredService<IMongoDatabase>().GetCollection<CharacterSheet>("CharacterSheets"));
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<CharacterSheet>("Sheets"));
+
+// Register the OverallClasses collection
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<OverallClasses>("Classes"));
+
+// Register the Armor collection
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Armor>("Armor"));
+    
+// Register the Weapon collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Weapon>("Weapons"));
+    
+// Register the Spell collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Spell>("Spells"));
+    
+// Register the Possession collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Possession>("Possessions"));
+
+// Register the Races collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Race>("Races"));
+    
+// Register the Feats collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Feats>("Feats"));
+
+
 
 var app = builder.Build();
 
