@@ -11,5 +11,6 @@ namespace DND.Models
         public int Range { get; set; }
         public string AdditionalEffect { get; set; }
         public string AttackModifier { get; set; }
+        public bool Finesse { get; set; }
     }
 }

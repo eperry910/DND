@@ -8,6 +8,6 @@ namespace DND.Models
         public int Value { get; set; }
         public int ArmorClass { get; set; }
         public string ArmorType { get; set; } // e.g., Light, Medium, Heavy
-        public string AdditionalEffect { get; set; }
+        public string? AdditionalEffect { get; set; }
     }
 }
