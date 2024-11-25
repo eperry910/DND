@@ -1,15 +1,19 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace DND.Models;
 
 public class OverallClasses{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? _id { get; set; }
     public string Name { get; set; }
-    public List<Subclass> Subclasses { get; set; }
-    public Dictionary<string, string> ClassFeatures { get; set; }
-    public bool SpellCasting { get; set; }
-    public bool PactMagic { get; set; }
-    public string HitDice { get; set; }
+    public List<string> Subclasses { get; set; }
+    public Dictionary<string, List<string>> ClassFeatures { get; set; }
+    public string CastingType { get; set; } //Full Caster, Half Caster, Subclass Caster, Pact Magic
+    public int HitDice { get; set; }
     public List<string> SavingThrows { get; set; }
-    public List<Weapon> startingClassWeapons { get; set; }
-    public List<Armor> startingClassArmor { get; set; }
-    public List<Possession> startingClassPossessions { get; set; }
-
+    public List<List<string>> startingItems { get; set; }
+    public string SpellCastingAbility { get; set; }
+    public List<string> Proficiencies { get; set; }
 }

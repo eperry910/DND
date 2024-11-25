@@ -53,21 +53,6 @@ namespace DND.Controllers
             _OverallClasses.ReplaceOne(sheet => sheet.Name == id, updatedOverallClasses);
             return Ok(updatedOverallClasses);
         }
-        [HttpPost("{id}/Subclass", Name = "Add Subclass")]
-        public IActionResult AddSubclass(string id, [FromBody] OverallClasses updatedOverallClasses)
-         {
-            var result = _OverallClasses.Find(sheet => sheet.Name == id).FirstOrDefault();
-            if (result == null)
-            {
-                return NotFound();
-            }
-            result.Subclasses.Add(new Subclass(){
-                Name = updatedOverallClasses.Subclasses[0].Name,
-                SubclassFeatures = updatedOverallClasses.Subclasses[0].SubclassFeatures
-            });
-            _OverallClasses.ReplaceOne(sheet => sheet.Name == id, result);
-            return Ok(result);
-        }
         [HttpPost("AddClass", Name="Add Class")]
         public IActionResult AddClass([FromBody] OverallClasses newClass)
         {

@@ -1,0 +1,92 @@
+{
+    "Wizard": {
+        "SpellcastingType": "Full Caster",
+        "Spell Casting Ability": "Intelligence",
+        "Saving Throws": [
+            "Intelligence",
+            "Wisdom"
+        ],
+        "Proficiencies": [
+            "Daggers",
+            "Darts",
+            "Slings",
+            "Quarterstaffs",
+            "Light Crossbows"
+        ],
+        "Starting Equipment": [
+            [
+                "Quarterstaff",
+                "Dagger"
+            ],
+            [
+                "Component Pouch",
+                "Arcane Focus"
+            ],
+            [
+                "Scholar's Pack",
+                "Explorer's Pack"
+            ],
+            [
+                "Spellbook"
+            ]
+        ],
+        "Subclasses": [
+            "School of Abjuration",
+            "School of Conjuration",
+            "School of Divination",
+            "School of Enchantment",
+            "School of Evocation",
+            "School of Illusion",
+            "School of Necromancy",
+            "School of Transmutation"
+        ],
+        "Hit Die": 6,
+        "Class Features": {
+            "Level 1": [
+                "Spellcasting",
+                "Arcane Recovery"
+            ],
+            "Level 2": [
+                "Arcane Tradition"
+            ],
+            "Level 3": [],
+            "Level 4": [
+                "Ability Score Improvement or Feat"
+            ],
+            "Level 5": [],
+            "Level 6": [
+                "Arcane Tradition Feature"
+            ],
+            "Level 7": [],
+            "Level 8": [
+                "Ability Score Improvement or Feat"
+            ],
+            "Level 9": [],
+            "Level 10": [
+                "Arcane Tradition Feature"
+            ],
+            "Level 11": [],
+            "Level 12": [
+                "Ability Score Improvement or Feat"
+            ],
+            "Level 13": [],
+            "Level 14": [
+                "Arcane Tradition Feature"
+            ],
+            "Level 15": [],
+            "Level 16": [
+                "Ability Score Improvement or Feat"
+            ],
+            "Level 17": [],
+            "Level 18": [
+                "Spell Mastery"
+            ],
+            "Level 19": [
+                "Ability Score Improvement or Feat"
+            ],
+            "Level 20": [
+                "Signature Spells"
+            ]
+        }
+    }
+}

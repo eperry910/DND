@@ -12,7 +12,6 @@ namespace DND.Models
         public int CharacterLevel { get; set; }
         public Race CharacterRace { get; set; }
         public List<string> SkillProficiencies { get; set; }
-        public Dictionary<string, List<string>> GearProficiencies { get; set; }
         public List<string> Expertise { get; set; }
         public List<string> Languages { get; set; }
         public int HitPoints { get; set; }
@@ -32,11 +31,18 @@ namespace DND.Models
         public Pacts possessedPact { get; set; }
         public string sneakAttackDamage { get; set;}
         public int ArcaneRecoveryPoints { get; set; }
-        public List<Spells> AlwaysFreeSpells { get; set; }
-        public List<Spells> FreeIfPreparedSpells { get; set; }
+        public List<Spell> AlwaysFreeSpells { get; set; }
+        public List<Spell> FreeIfPreparedSpells { get; set; }
+        public List<Spell> AlwaysPreparedSpells { get; set; }
         public int RageCount { get; set; }
         public int RageDamage { get; set; }
         public int NumberOfExtraAttacks { get; set; }
+        public int ChannelDivinityCharges { get; set; }
+        public int BardicInspirationCharges { get; set; }
+        public string BardicInspirationDice { get; set; }
+        public bool JackOfAllTrades { get; set; }
+        public bool ActionSurge { get; set; }
+        public List<string> Maneuvers { get; set; }
         
         
     }
