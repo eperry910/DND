@@ -35,5 +35,23 @@ namespace DND.Controllers
             var characterSheets = _characterSheets.Find(sheet => true).ToList();
             return Ok(characterSheets);
         }
+        [HttpGet("{id}", Name = "Get Character")]
+        public IActionResult Get(string id)
+        {
+            var result = _characterSheets.Find(sheet => sheet.Id == id).FirstOrDefault();
+            return Ok(result);
+        }
+        [HttpPut("{id}", Name = "Update Character")]
+        public IActionResult Put(string id, [FromBody] CharacterSheet updatedCharacterSheet)
+        {
+            var result = _characterSheets.Find(sheet => sheet.Id == id).FirstOrDefault();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            updatedCharacterSheet.Id = id;
+            _characterSheets.ReplaceOne(sheet => sheet.Id == id, updatedCharacterSheet);
+            return Ok(updatedCharacterSheet);
+        }
     }
 }
