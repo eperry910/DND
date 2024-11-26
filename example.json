@@ -1,92 +1,44 @@
-{
-    "Wizard": {
-        "SpellcastingType": "Full Caster",
-        "Spell Casting Ability": "Intelligence",
-        "Saving Throws": [
-            "Intelligence",
-            "Wisdom"
-        ],
-        "Proficiencies": [
-            "Daggers",
-            "Darts",
-            "Slings",
-            "Quarterstaffs",
-            "Light Crossbows"
-        ],
-        "Starting Equipment": [
-            [
-                "Quarterstaff",
-                "Dagger"
-            ],
-            [
-                "Component Pouch",
-                "Arcane Focus"
-            ],
-            [
-                "Scholar's Pack",
-                "Explorer's Pack"
-            ],
-            [
-                "Spellbook"
-            ]
-        ],
-        "Subclasses": [
-            "School of Abjuration",
-            "School of Conjuration",
-            "School of Divination",
-            "School of Enchantment",
-            "School of Evocation",
-            "School of Illusion",
-            "School of Necromancy",
-            "School of Transmutation"
-        ],
-        "Hit Die": 6,
-        "Class Features": {
-            "Level 1": [
-                "Spellcasting",
-                "Arcane Recovery"
-            ],
-            "Level 2": [
-                "Arcane Tradition"
-            ],
-            "Level 3": [],
-            "Level 4": [
-                "Ability Score Improvement or Feat"
-            ],
-            "Level 5": [],
-            "Level 6": [
-                "Arcane Tradition Feature"
-            ],
-            "Level 7": [],
-            "Level 8": [
-                "Ability Score Improvement or Feat"
-            ],
-            "Level 9": [],
-            "Level 10": [
-                "Arcane Tradition Feature"
-            ],
-            "Level 11": [],
-            "Level 12": [
-                "Ability Score Improvement or Feat"
-            ],
-            "Level 13": [],
-            "Level 14": [
-                "Arcane Tradition Feature"
-            ],
-            "Level 15": [],
-            "Level 16": [
-                "Ability Score Improvement or Feat"
-            ],
-            "Level 17": [],
-            "Level 18": [
-                "Spell Mastery"
-            ],
-            "Level 19": [
-                "Ability Score Improvement or Feat"
-            ],
-            "Level 20": [
-                "Signature Spells"
-            ]
+
+       [ {
+            "Name": "Path of the Berserker",
+            "Description": "For some barbarians, rage is a means to an end—that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood.",
+            "SubclassFeatures": {
+                "Level 3": ["Frenzy"],
+                "Level 6": ["Mindless Rage"],
+                "Level 10": ["Intimidating Presence"],
+                "Level 14": ["Retaliation"]
+            },
+            "ParentClass": "Barbarian"
+        },
+        {
+            "Name": "Path of the Totem Warrior",
+            "Description": "The Path of the Totem Warrior is a spiritual journey, as the barbarian accepts a spirit animal as guide, protector, and inspiration.",
+            "SubclassFeatures": {
+                "Level 3": ["Spirit Seeker", "Totem Spirit"],
+                "Level 6": ["Aspect of the Beast"],
+                "Level 10": ["Spirit Walker"],
+                "Level 14": ["Totemic Attunement"]
+            },
+            "ParentClass": "Barbarian"
+        },
+        {
+            "Name": "College of Lore",
+            "Description": "Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales.",
+            "SubclassFeatures": {
+                "Level 3": ["Bonus Proficiencies", "Cutting Words"],
+                "Level 6": ["Additional Magical Secrets"],
+                "Level 14": ["Peerless Skill"]
+            },
+            "ParentClass": "Bard"
+        },
+        {
+            "Name": "College of Valor",
+            "Description": "Bards of the College of Valor are daring skalds whose tales keep alive the memory of the great heroes of the past, and thereby inspire a new generation of heroes.",
+            "SubclassFeatures": {
+                "Level 3": ["Bonus Proficiencies", "Combat Inspiration"],
+                "Level 6": ["Extra Attack"],
+                "Level 14": ["Battle Magic"]
+            },
+            "ParentClass": "Bard"
         }
-    }
-}
+    ]
