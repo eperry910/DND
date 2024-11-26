@@ -35,7 +35,7 @@ namespace DND.Controllers
             var SubclassSet = _SubclassSet.Find(sheet => true).ToList();
             return Ok(SubclassSet);
         }
-        [HttpPost(Name = "Add Multiple Subclasses")]
+        [HttpPost("AddingSubclasses", Name = "Add Multiple Subclasses")]
         public IActionResult Post([FromBody] List<Subclass> SubclassSet)
         {
             if (SubclassSet == null)
