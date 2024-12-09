@@ -1,44 +1,72 @@
-
-       [ {
-            "Name": "Path of the Berserker",
-            "Description": "For some barbarians, rage is a means to an end—that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood.",
-            "SubclassFeatures": {
-                "Level 3": ["Frenzy"],
-                "Level 6": ["Mindless Rage"],
-                "Level 10": ["Intimidating Presence"],
-                "Level 14": ["Retaliation"]
-            },
-            "ParentClass": "Barbarian"
-        },
-        {
-            "Name": "Path of the Totem Warrior",
-            "Description": "The Path of the Totem Warrior is a spiritual journey, as the barbarian accepts a spirit animal as guide, protector, and inspiration.",
-            "SubclassFeatures": {
-                "Level 3": ["Spirit Seeker", "Totem Spirit"],
-                "Level 6": ["Aspect of the Beast"],
-                "Level 10": ["Spirit Walker"],
-                "Level 14": ["Totemic Attunement"]
-            },
-            "ParentClass": "Barbarian"
-        },
-        {
-            "Name": "College of Lore",
-            "Description": "Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales.",
-            "SubclassFeatures": {
-                "Level 3": ["Bonus Proficiencies", "Cutting Words"],
-                "Level 6": ["Additional Magical Secrets"],
-                "Level 14": ["Peerless Skill"]
-            },
-            "ParentClass": "Bard"
-        },
-        {
-            "Name": "College of Valor",
-            "Description": "Bards of the College of Valor are daring skalds whose tales keep alive the memory of the great heroes of the past, and thereby inspire a new generation of heroes.",
-            "SubclassFeatures": {
-                "Level 3": ["Bonus Proficiencies", "Combat Inspiration"],
-                "Level 6": ["Extra Attack"],
-                "Level 14": ["Battle Magic"]
-            },
-            "ParentClass": "Bard"
-        }
-    ]
+[
+    {
+        "FeatureName": "Rage",
+        "ActionType": "GainRage",
+        "Description": "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.",
+        "ActionEconomy": "BonusAction",
+        "Resource": "Rage Charges"
+    },
+    {
+        "FeatureName": "Unarmored Defense",
+        "ActionType": "GainBarbarianUnarmoredDefense",
+        "Description": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Reckless Attack",
+        "ActionType": "GainRecklessAttack",
+        "Description": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly.",
+        "ActionEconomy": "Action",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Danger Sense",
+        "ActionType": "GainAdvantageDexSavingThrows",
+        "Description": "At 2nd level, you gain advantage on Dexterity saving throws against effects that you can see",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Feral Instinct",
+        "ActionType": "GainAdvantageOnInitiative",
+        "Description": "By 7th level, your instincts are so honed that you have advantage on initiative rolls.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Brutal Critical",
+        "ActionType": "Passive",
+        "Description": "Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Relentless Rage",
+        "ActionType": "GainRelentlessRage",
+        "Description": "Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you’re raging and don’t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead. DC increases by 5 each time, until short or long rest",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Persistent Rage",
+        "ActionType": "KeepRage",
+        "Description": "Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Indomitable Might",
+        "ActionType": "ReplaceRollWithScoreStrength",
+        "Description": "Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Primal Champion",
+        "ActionType": "AbilityScoreIncreaseStrengthAndConstitution4",
+        "Description": "At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    }
+]

@@ -1,8 +1,13 @@
 
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 namespace DND.Models
 {
     public class ClassFeature
     { 
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? _id { get; set; }
         public string FeatureName { get; set; }
         public string ActionType { get; set; } // e.g., "AddProficiency", "ChooseSpell", etc.
         public string Description { get; set; }

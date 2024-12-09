@@ -51,8 +51,14 @@ builder.Services.AddSingleton(sp =>
 // Register the Feats collection
     builder.Services.AddSingleton(sp =>
     sp.GetRequiredService<IMongoDatabase>().GetCollection<Feats>("Feats"));
+    
+// Register the Subclass collection
+    builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<Subclass>("Subclasses"));
 
-
+// Register the ClassFeature collection
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IMongoDatabase>().GetCollection<ClassFeature>("ClassFeatures"));
 
 var app = builder.Build();
 
@@ -60,8 +66,6 @@ var app = builder.Build();
 
     app.UseSwagger();
     app.UseSwaggerUI();
-
-
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
