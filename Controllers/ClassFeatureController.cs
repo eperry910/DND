@@ -25,13 +25,13 @@ namespace DND.Controllers
             return Ok(classFeatures);
         }
 
-        [HttpPost]
+        [HttpPost ("AddSingleFeature", Name="Adds A Single Feature")]
         public async Task<ActionResult<ClassFeature>> Post(ClassFeature classFeature)
         {
             await _classFeatures.InsertOneAsync(classFeature);
             return CreatedAtAction(nameof(Get), new { id = classFeature.FeatureName }, classFeature);
         }
-        [HttpPost("AddingFeatures", Name = "Add Multiple Features")]
+        [HttpPost("AddingMultipleFeatures", Name = "Add Multiple Features")]
         public IActionResult Post([FromBody] List<ClassFeature> Features)
         {
             if (Features == null)
