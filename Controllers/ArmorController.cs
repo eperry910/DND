@@ -35,7 +35,7 @@ namespace DND.Controllers
             var armorSet = _armorSet.Find(sheet => true).ToList();
             return Ok(armorSet);
         }
-        [HttpGet("{name}",Name = "Get Specified Armor Set")]
+        [HttpGet("{name}")]
         public IActionResult Get(string name){
             var armorSet = _armorSet.Find(sheet => sheet.Name == name).FirstOrDefault();
             return Ok(armorSet);
