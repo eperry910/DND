@@ -1,30 +1,135 @@
 [
     {
-        "FeatureName": "Frenzy",
-        "ActionType": "GainFrenzy",
-        "Description": "Instead of raging, you can choose to Frenzy, which allows you to make a single melee weapon attack as a bonus action on each of your turns after this one for the duation of rage. When rage ends, you gain one level of exhaustion.",
+        "featureName": "Frenzy",
+        "actionType": "GainFrenzy",
+        "description": "Instead of raging, you can choose to Frenzy, which allows you to make a single melee weapon attack as a bonus action on each of your turns after this one for the duation of rage. When rage ends, you gain one level of exhaustion.",
         "ActionEconomy": "BonusAction",
         "Resource": "Rage Charges"
     },
     {
-        "FeatureName": "Mindless Rage",
-        "ActionType": "GainMindlessRage",
-        "Description": "Beginning at 6th level, you can't be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.",
+        "featureName": "Mindless Rage",
+        "actionType": "GainMindlessRage",
+        "description": "Beginning at 6th level, you can't be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.",
         "ActionEconomy": "Passive",
         "Resource": "None"
     },
     {
-        "FeatureName": "Intimidating Presence",
-        "ActionType": "GainIntimidatingPresence",
-        "Description": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly.",
+        "featureName": "Intimidating Presence",
+        "actionType": "GainIntimidatingPresence",
+        "description": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly.",
         "ActionEconomy": "Action",
         "Resource": "None"
     },
     {
-        "FeatureName": "Danger Sense",
-        "ActionType": "AdvantageDexSavingThrows",
-        "Description": "At 2nd level, you gain advantage on Dexterity saving throws against effects that you can see",
+        "featureName": "Danger Sense",
+        "actionType": "AdvantageDexSavingThrows",
+        "description": "At 2nd level, you gain advantage on Dexterity saving throws against effects that you can see",
         "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "featureName": "Spirit Seeker",
+        "actionType": "GainSpiritSeeker",
+        "description": "You gain the ability to cast the Beast Sense and Speak with Animals spells, but only as rituals.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "featureName": "Totem Spirit",
+        "actionType": "GainTotemSpirit",
+        "description": "At 3rd level, when you adopt this path, you choose a totem spirit and gain its feature. Options include Bear, Eagle, and Wolf.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "featureName": "Aspect of the Beast",
+        "actionType": "GainAspectOfTheBeast",
+        "description": "At 6th level, you gain a magical benefit based on the totem animal of your choice. Options include Bear, Eagle, and Wolf.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "featureName": "Spirit Walker",
+        "actionType": "GainSpiritWalker",
+        "description": "At 10th level, you can cast the Commune with Nature spell, but only as a ritual.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "featureName": "Totemic Attunement",
+        "actionType": "GainTotemicAttunement",
+        "description": "At 14th level, you gain a magical benefit based on the totem animal of your choice. Options include Bear, Eagle, and Wolf.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Divine Domain",
+        "ActionType": "GainDivineDomain",
+        "Description": "At 1st level, you choose a divine domain that grants you domain spells and other features.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Channel Divinity",
+        "ActionType": "GainChannelDivinity",
+        "Description": "At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects.",
+        "ActionEconomy": "Action",
+        "Resource": "Channel Divinity Charges"
+    },
+    {
+        "FeatureName": "Destroy Undead",
+        "ActionType": "GainDestroyUndead",
+        "Description": "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its CR is at or below a certain threshold.",
+        "ActionEconomy": "Action",
+        "Resource": "Channel Divinity Charges"
+    },
+    {
+        "FeatureName": "Divine Intervention",
+        "ActionType": "GainDivineIntervention",
+        "Description": "Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.",
+        "ActionEconomy": "Action",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Domain Spells",
+        "ActionType": "GainDomainSpells",
+        "Description": "Each domain has a list of spells—its domain spells—that you gain at the cleric levels noted in the domain description.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Blessing of Knowledge",
+        "ActionType": "GainBlessingOfKnowledge",
+        "Description": "At 1st level, you learn two languages of your choice and become proficient in your choice of two of the following skills: Arcana, History, Nature, or Religion.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Channel Divinity: Knowledge of the Ages",
+        "ActionType": "GainKnowledgeOfTheAges",
+        "Description": "Starting at 2nd level, you can use your Channel Divinity to tap into a divine well of knowledge.",
+        "ActionEconomy": "Action",
+        "Resource": "Channel Divinity Charges"
+    },
+    {
+        "FeatureName": "Channel Divinity: Read Thoughts",
+        "ActionType": "GainReadThoughts",
+        "Description": "At 6th level, you can use your Channel Divinity to read a creature's thoughts.",
+        "ActionEconomy": "Action",
+        "Resource": "Channel Divinity Charges"
+    },
+    {
+        "FeatureName": "Potent Spellcasting",
+        "ActionType": "GainPotentSpellcasting",
+        "Description": "Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip.",
+        "ActionEconomy": "Passive",
+        "Resource": "None"
+    },
+    {
+        "FeatureName": "Visions of the Past",
+        "ActionType": "GainVisionsOfThePast",
+        "Description": "Starting at 17th level, you can call up visions of the past that relate to an object you hold or your immediate surroundings.",
+        "ActionEconomy": "Action",
         "Resource": "None"
     }
 ]
