@@ -32,13 +32,13 @@ namespace DND.Controllers
         [HttpGet(Name = "Get All Armor Sets")]
         public IActionResult Get()
         {
-            var armorSet = _armorSet.Find(sheet => true).ToList();
-            return Ok(armorSet);
+            var result = _armorSet.Find(sheet => true).ToList();
+            return Ok(result);
         }
-        [HttpGet("{name}")]
+        [HttpGet("{id}", Name = "Get Specific Armor Set")]
         public IActionResult Get(string name){
-            var armorSet = _armorSet.Find(sheet => sheet.Name == name).FirstOrDefault();
-            return Ok(armorSet);
+            var result = _armorSet.Find(sheet => sheet.Name == id).FirstOrDefault();
+            return Ok(result);
         }
     }
 }
