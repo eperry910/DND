@@ -1,3 +1,5 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 namespace DND.Models
 {
     public class Armor : IEquipment
