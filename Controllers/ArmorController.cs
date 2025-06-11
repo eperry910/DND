@@ -32,12 +32,12 @@ namespace DND.Controllers
         [HttpGet(Name = "Get All Armor Sets")]
         public IActionResult Get()
         {
-            var armorSet = _armorSet.Find(sheet => true).ToList();
+            var armorSet = await _armorSet.Find(sheet => true).ToList();
             return Ok(armorSet);
         }
         [HttpGet("{name}",Name = "Get Specified Armor Set")]
         public IActionResult Get(string name){
-            var armorSet = _armorSet.Find(sheet => sheet.Name == name);
+            var armorSet = await _armorSet.Find(sheet => sheet.Name == name);
             return Ok(armorSet);
         }
     }
