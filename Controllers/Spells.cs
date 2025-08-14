@@ -5,46 +5,64 @@ using DND.Models;
 
 namespace DND.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class SpellController : ControllerBase
-    {
-        private readonly IMongoCollection<Spell> _SpellSet;
-        private readonly ILogger<SpellController> _logger;
+	[ApiController]
+	[Route("api/spells")]
+	public class SpellController : ControllerBase
+	{
+		private readonly IMongoCollection<Spell> _spells;
+		private readonly ILogger<SpellController> _logger;
 
-        public SpellController(IMongoCollection<Spell> SpellSet, ILogger<SpellController> logger)
-        {
-            _SpellSet = SpellSet;
-            _logger = logger;
-        }
+		public SpellController(IMongoCollection<Spell> SpellSet, ILogger<SpellController> logger)
+		{
+			_spells = SpellSet;
+			_logger = logger;
+		}
 
-        [HttpPost(Name = "New Spell Set")]
-        public IActionResult Post([FromBody] Spell SpellSet)
-        {
-            if (SpellSet == null)
-            {
-                return BadRequest("Spell Set cannot be null");
-            }
-            _SpellSet.InsertOne(SpellSet);
-            return Ok(SpellSet);
-        }
+		[HttpPost]
+		public async Task<IActionResult> Create([FromBody] Spell spell)
+		{
+			if (spell == null)
+			{
+				return BadRequest("Spell cannot be null");
+			}
+			await _spells.InsertOneAsync(spell);
+			return CreatedAtAction(nameof(GetByName), new { name = spell.Name }, spell);
+		}
 
-        [HttpGet(Name = "Get All Spell Sets")]
-        public IActionResult Get()
-        {
-            var SpellSet = _SpellSet.Find(sheet => true).ToList();
-            return Ok(SpellSet);
-        }
-        [HttpPut(Name = "Update Spell")]
-        public IActionResult Put(string id, [FromBody] Spell updatedSpell)
-        {
-            var spell = _SpellSet.Find<Spell>(spell => spell.Name == id).FirstOrDefault();
-            if (spell == null)
-            {
-                return NotFound();
-            }
-            _SpellSet.ReplaceOne(spell => spell.Name == id, updatedSpell);
-            return Ok(updatedSpell);
-        }
-    }
+		[HttpGet]
+		public async Task<IActionResult> GetAll()
+		{
+			var spells = await _spells.Find(_ => true).ToListAsync();
+			return Ok(spells);
+		}
+
+		[HttpGet("{name}")]
+		public async Task<IActionResult> GetByName(string name)
+		{
+			var result = await _spells.Find(spell => spell.Name == name).FirstOrDefaultAsync();
+			if (result == null) return NotFound();
+			return Ok(result);
+		}
+
+		[HttpPut("{name}")]
+		public async Task<IActionResult> Update(string name, [FromBody] Spell updatedSpell)
+		{
+			var spell = await _spells.Find<Spell>(s => s.Name == name).FirstOrDefaultAsync();
+			if (spell == null)
+			{
+				return NotFound();
+			}
+			updatedSpell.Name = name;
+			await _spells.ReplaceOneAsync(s => s.Name == name, updatedSpell);
+			return Ok(updatedSpell);
+		}
+
+		[HttpDelete("{name}")]
+		public async Task<IActionResult> Delete(string name)
+		{
+			var result = await _spells.DeleteOneAsync(s => s.Name == name);
+			if (result.DeletedCount == 0) return NotFound();
+			return NoContent();
+		}
+	}
 }

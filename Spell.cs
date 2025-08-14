@@ -1,7 +1,11 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace DND.Models
 {
     public class Spell
     {
+        [BsonId]
         public string Name { get; set; }
         public int Level { get; set; }
         public string School { get; set; }

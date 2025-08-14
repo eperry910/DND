@@ -1,7 +1,11 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace DND.Models
 {
     public class CharacterClass
     {
+        [BsonId]
         public string ClassName { get; set; }
         public int ClassLevel { get; set; }
         public bool StartingClass { get; set; }

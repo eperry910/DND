@@ -4,58 +4,84 @@ using MongoDB.Driver;
 
 namespace DND.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ClassFeatureController : ControllerBase
-    {
-        private readonly IMongoCollection<ClassFeature> _classFeatures;
+	[ApiController]
+	[Route("api/class-features")]
+	public class ClassFeatureController : ControllerBase
+	{
+		private readonly IMongoCollection<ClassFeature> _classFeatures;
 
-        private readonly ILogger<ClassFeatureController> _logger;
-        public ClassFeatureController(IMongoCollection<ClassFeature> classFeatures, ILogger<ClassFeatureController> logger)
-        {
-            _classFeatures = classFeatures;
-            _logger = logger;
-        }
+		private readonly ILogger<ClassFeatureController> _logger;
+		public ClassFeatureController(IMongoCollection<ClassFeature> classFeatures, ILogger<ClassFeatureController> logger)
+		{
+			_classFeatures = classFeatures;
+			_logger = logger;
+		}
 
-        [HttpGet]
-        public async Task<ActionResult<List<ClassFeature>>> Get()
-        {
-            var classFeatures = await _classFeatures.Find(cf => true).ToListAsync();
-            return Ok(classFeatures);
-        }
+		[HttpGet]
+		public async Task<ActionResult<List<ClassFeature>>> GetAll()
+		{
+			var classFeatures = await _classFeatures.Find(cf => true).ToListAsync();
+			return Ok(classFeatures);
+		}
 
-        [HttpPost ("AddSingleFeature", Name="Adds A Single Feature")]
-        public async Task<ActionResult<ClassFeature>> Post(ClassFeature classFeature)
-        {
-            var existingFeature = await _classFeatures.Find(cf => cf.FeatureName == classFeature.FeatureName).FirstOrDefaultAsync();
-            if (existingFeature != null)
-            {
-                return BadRequest("Feature with the same name already exists.");
-            }
-            await _classFeatures.InsertOneAsync(classFeature);
-            return CreatedAtAction(nameof(Get), new { id = classFeature.FeatureName }, classFeature);
-        }
+		[HttpGet("{name}")]
+		public async Task<ActionResult<ClassFeature>> GetByName(string name)
+		{
+			var feature = await _classFeatures.Find(cf => cf.FeatureName == name).FirstOrDefaultAsync();
+			if (feature == null) return NotFound();
+			return Ok(feature);
+		}
 
-        [HttpPost("AddingMultipleFeatures", Name = "Add Multiple Features")]
-        public async Task<IActionResult> Post([FromBody] List<ClassFeature> Features)
-        {
-            if (Features == null)
-            {
-                return BadRequest("Subclass Set cannot be null");
-            }
+		[HttpPost]
+		public async Task<ActionResult<ClassFeature>> Create([FromBody] ClassFeature classFeature)
+		{
+			var existingFeature = await _classFeatures.Find(cf => cf.FeatureName == classFeature.FeatureName).FirstOrDefaultAsync();
+			if (existingFeature != null)
+			{
+				return BadRequest("Feature with the same name already exists.");
+			}
+			await _classFeatures.InsertOneAsync(classFeature);
+			return CreatedAtAction(nameof(GetByName), new { name = classFeature.FeatureName }, classFeature);
+		}
 
-            var featureNames = Features.Select(f => f.FeatureName).ToList();
-            var existingFeatures = await _classFeatures.Find(cf => featureNames.Contains(cf.FeatureName)).ToListAsync();
+		[HttpPost("bulk")]
+		public async Task<IActionResult> CreateMany([FromBody] List<ClassFeature> features)
+		{
+			if (features == null)
+			{
+				return BadRequest("Features cannot be null");
+			}
 
-            var newFeatures = Features.Where(f => !existingFeatures.Any(ef => ef.FeatureName == f.FeatureName)).ToList();
+			var featureNames = features.Select(f => f.FeatureName).ToList();
+			var existingFeatures = await _classFeatures.Find(cf => featureNames.Contains(cf.FeatureName)).ToListAsync();
 
-            if (newFeatures.Count == 0)
-            {
-                return BadRequest("All features already exist.");
-            }
+			var newFeatures = features.Where(f => !existingFeatures.Any(ef => ef.FeatureName == f.FeatureName)).ToList();
 
-            await _classFeatures.InsertManyAsync(newFeatures);
-            return Ok(newFeatures);
-        }
-    }
+			if (newFeatures.Count == 0)
+			{
+				return BadRequest("All features already exist.");
+			}
+
+			await _classFeatures.InsertManyAsync(newFeatures);
+			return Ok(newFeatures);
+		}
+
+		[HttpPut("{name}")]
+		public async Task<IActionResult> Update(string name, [FromBody] ClassFeature updated)
+		{
+			var existing = await _classFeatures.Find(cf => cf.FeatureName == name).FirstOrDefaultAsync();
+			if (existing == null) return NotFound();
+			updated.FeatureName = name;
+			await _classFeatures.ReplaceOneAsync(cf => cf.FeatureName == name, updated);
+			return Ok(updated);
+		}
+
+		[HttpDelete("{name}")]
+		public async Task<IActionResult> Delete(string name)
+		{
+			var result = await _classFeatures.DeleteOneAsync(cf => cf.FeatureName == name);
+			if (result.DeletedCount == 0) return NotFound();
+			return NoContent();
+		}
+	}
 }

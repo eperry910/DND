@@ -1,49 +1,79 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace DND.Models
 {
     public class CharacterSheet
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public string startingClass { get; set; }
-        public Dictionary<string, OverallClasses> Classes { get; set; }
-        public int UnarmoredAC { get; set; }
         public string CharacterName { get; set; }
-        public List<Feats> Feats { get; set; }
-        public Dictionary<string, int> AbilityScores { get; set; }
-        public int CharacterLevel { get; set; }
         public Race CharacterRace { get; set; }
+        public string Background { get; set; }
+        public string Alignment { get; set; }
+        
+        // Core stats
+        public Dictionary<string, int> AbilityScores { get; set; }
+        public int HitPoints { get; set; }
+        public int MaxHitPoints { get; set; }
+        public int TemporaryHitPoints { get; set; }
+        
+        // Proficiencies
         public List<string> SkillProficiencies { get; set; }
         public List<string> Expertise { get; set; }
         public List<string> Languages { get; set; }
-        public int HitPoints { get; set; }
-        public int ProficiencyBonus { get; set; }
-        public string Background { get; set; }
-        public string Alignment { get; set; }
-        public Armor equippedArmor { get; set; }
-        public Weapon equippedWeapon { get; set; }
-        public List<Armor> storedArmor { get; set; }
-        public List<Weapon> storedWeapon { get; set; }
-        public List<Possession> possessions { get; set; }
-        public int currentExperience { get; set; }
-        public List<string> EldritchInvocations { get; set; }
-        public int SorceryPoints { get; set; }
-        public List<Metamagics> KnownMetamagics { get; set; }
-        public List<EldritchInvocations> KnownEldritchInvocations { get; set; }
-        public Pacts possessedPact { get; set; }
-        public string sneakAttackDamage { get; set;}
-        public int ArcaneRecoveryPoints { get; set; }
-        public List<Spell> AlwaysFreeSpells { get; set; }
-        public List<Spell> FreeIfPreparedSpells { get; set; }
-        public List<Spell> AlwaysPreparedSpells { get; set; }
-        public int RageCount { get; set; }
-        public int RageDamage { get; set; }
-        public int NumberOfExtraAttacks { get; set; }
-        public int ChannelDivinityCharges { get; set; }
-        public int BardicInspirationCharges { get; set; }
-        public string BardicInspirationDice { get; set; }
-        public bool JackOfAllTrades { get; set; }
-        public bool ActionSurge { get; set; }
-        public List<string> Maneuvers { get; set; }
+        public List<string> ToolProficiencies { get; set; }
+        public List<string> WeaponProficiencies { get; set; }
+        public List<string> ArmorProficiencies { get; set; }
         
+        // Classes and levels
+        public List<CharacterClassLevel> ClassLevels { get; set; }
         
+        // Features and resources
+        public List<CharacterFeature> ActiveFeatures { get; set; }
+        public List<CharacterResource> Resources { get; set; }
+        
+        // Equipment
+        public List<EquippedItem> EquippedItems { get; set; }
+        public List<InventoryItem> Inventory { get; set; }
+        
+        // Spells
+        public List<PreparedSpell> PreparedSpells { get; set; }
+        public List<SpellSlot> SpellSlots { get; set; }
+        public List<SpellSlot> WarlockSpellSlots { get; set; }
+        
+        // Experience
+        public int ExperiencePoints { get; set; }
+        
+        // Calculated properties (not stored in DB)
+        [BsonIgnore]
+        public int TotalLevel => ClassLevels?.Sum(cl => cl.Level) ?? 0;
+        
+        [BsonIgnore]
+        public int ProficiencyBonus => ((TotalLevel - 1) / 4) + 2;
+        
+        [BsonIgnore]
+        public int FullCasterLevels => ClassLevels?
+            .Where(cl => IsFullCaster(cl.ClassName))
+            .Sum(cl => cl.Level) ?? 0;
+            
+        [BsonIgnore]
+        public int HalfCasterLevels => ClassLevels?
+            .Where(cl => IsHalfCaster(cl.ClassName))
+            .Sum(cl => cl.Level) ?? 0;
+            
+        [BsonIgnore]
+        public int WarlockLevels => ClassLevels?
+            .Where(cl => cl.ClassName.Equals("Warlock", StringComparison.OrdinalIgnoreCase))
+            .Sum(cl => cl.Level) ?? 0;
+        
+        private static bool IsFullCaster(string className) => 
+            new[] { "Bard", "Cleric", "Druid", "Sorcerer", "Wizard" }
+            .Contains(className, StringComparer.OrdinalIgnoreCase);
+            
+        private static bool IsHalfCaster(string className) => 
+            new[] { "Paladin", "Ranger", "Artificer" }
+            .Contains(className, StringComparer.OrdinalIgnoreCase);
     }
 }
